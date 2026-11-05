@@ -2,8 +2,15 @@
 // TUTOR.JS - Chat con IA (Groq)
 // ===============================
 
-// ⚠️ IMPORTANTE: Esta clave está expuesta. Después de la defensa, bórrala y genera una nueva.
+// ⚠️ IMPORTANTE: Esta clave queda expuesta en el navegador.
+// - Usa un repositorio PRIVADO si subes este archivo.
+// - Después de la defensa, ELIMINA esta clave en console.groq.com y genera otra nueva.
 const GROQ_API_KEY = "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";
+
+// ✅ Modelo vigente en Groq.
+//   Los modelos Llama (llama3-70b-8192 / llama-3.3-70b-versatile) YA NO están disponibles.
+//   Opciones válidas: "openai/gpt-oss-120b", "openai/gpt-oss-20b", "qwen/qwen3.8-27b"
+const GROQ_MODEL = "openai/gpt-oss-120b";
 
 const chatMessages = document.getElementById('chat-messages');
 const chatInput = document.getElementById('chat-input');
@@ -31,6 +38,7 @@ Reglas importantes:
 - Si la pregunta NO está relacionada con estos temas, responde amablemente: "Esa pregunta está fuera del contenido de esta página. ¿Quieres que te resuma alguna sección o te explique cómo se usa alguna de las tecnologías en la cooperativa?"
 - Nunca inventes información que no esté en los temas de arriba.
 - Sé motivador y profesional.
+- Responde de forma directa: no expliques tu razonamiento interno, entrega solo la respuesta final al estudiante.
 `;
 
 // Función para agregar mensajes al chat
@@ -56,24 +64,45 @@ async function askTutor(userMessage) {
         "Authorization": `Bearer ${GROQ_API_KEY}`
       },
       body: JSON.stringify({
-        model: "llama3-70b-8192",
+        model: GROQ_MODEL,
         messages: [
           { role: "system", content: SYSTEM_PROMPT },
           { role: "user", content: userMessage }
         ],
         temperature: 0.7,
-        max_tokens: 600
+        // Los modelos gpt-oss usan tokens en su razonamiento interno,
+        // por eso usamos un límite alto para que la respuesta no quede vacía.
+        max_tokens: 2048
       })
     });
 
+    // Si el servidor devuelve un error, mostramos el detalle en consola
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({}));
       console.error("Error API:", response.status, errorData);
-      throw new Error("Error en la respuesta de la API");
+
+      if (response.status === 401) {
+        return "La API Key no es válida o fue revocada. Verifica la clave en tutor.js.";
+      }
+      if (response.status === 404) {
+        return "El modelo configurado no existe o no tienes acceso a él. Revisa GROQ_MODEL.";
+      }
+      if (response.status === 429) {
+        return "Se alcanzó el límite de uso. Espera un momento e intenta de nuevo.";
+      }
+      return "Ocurrió un error al conectar con el tutor. Verifica tu conexión a internet o la API Key.";
     }
 
     const data = await response.json();
-    return data.choices[0].message.content;
+    const mensaje = data.choices && data.choices[0] && data.choices[0].message;
+
+    // Algunos modelos devuelven el contenido en 'content'.
+    // Si viene vacío, usamos 'reasoning' como respaldo para no mostrar un globo vacío.
+    const contenido = (mensaje && mensaje.content && mensaje.content.trim()) ||
+                      (mensaje && mensaje.reasoning && mensaje.reasoning.trim()) ||
+                      "No pude generar una respuesta. Intenta reformular tu pregunta.";
+
+    return contenido;
   } catch (error) {
     console.error(error);
     return "Ocurrió un error al conectar con el tutor. Verifica tu conexión a internet o la API Key.";
