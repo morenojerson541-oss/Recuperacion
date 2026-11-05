@@ -4,7 +4,7 @@
 
 // ⚠️ IMPORTANTE: Reemplaza el valor de abajo con tu propia API Key gratuita de Groq
 // Consíguela en: https://console.groq.com
-const GROQ_API_KEY = "PEGA_AQUI_TU_API_KEY_DE_GROQ";
+const GROQ_API_KEY = "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";
 
 const chatMessages = document.getElementById('chat-messages');
 const chatInput = document.getElementById('chat-input');
