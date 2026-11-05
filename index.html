@@ -12,31 +12,37 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
   
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
   
   <!-- Nuestro CSS -->
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
+  <!-- BARRA DE PROGRESO DE LECTURA -->
+  <div id="scroll-progress" class="scroll-progress"></div>
+
   <!-- NAVBAR -->
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand fw-bold" href="#">
-        <i class="bi bi-building-gear me-2"></i>Módulo 4
+      <a class="navbar-brand fw-bold" href="#inicio">
+        <span class="brand-mark"><i class="bi bi-building-gear"></i></span>
+        <span class="brand-text">Módulo <span>4</span></span>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
           <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
           <li class="nav-item"><a class="nav-link" href="#arduino">Arduino</a></li>
           <li class="nav-item"><a class="nav-link" href="#winforms">WinForms + ASPX</a></li>
           <li class="nav-item"><a class="nav-link" href="#maui">.NET MAUI</a></li>
           <li class="nav-item"><a class="nav-link" href="#prestashop">PrestaShop</a></li>
           <li class="nav-item"><a class="nav-link" href="#integracion">Integración</a></li>
-          <li class="nav-item"><a class="nav-link" href="#quiz">Quiz</a></li>
+          <li class="nav-item"><a class="nav-link nav-cta" href="#quiz"><i class="bi bi-patch-question me-1"></i>Quiz</a></li>
         </ul>
       </div>
     </div>
@@ -44,24 +50,100 @@
 
   <!-- HERO -->
   <header id="inicio" class="hero d-flex align-items-center">
-    <div class="container text-center text-white">
-      <h1 class="display-5 fw-bold mb-3">Puesta en marcha de la empresa en asociatividad cooperativa</h1>
-      <p class="lead mb-4">Módulo 4 · Profesor Francisco Arcides Canales</p>
-      <p class="mb-4">Aprende de forma clara las tecnologías que se utilizan para poner en marcha y operar una cooperativa de manera moderna.</p>
-      <a href="#arduino" class="btn btn-light btn-lg px-4">Comenzar a explorar</a>
+    <div class="hero-bg-shapes" aria-hidden="true">
+      <span class="shape shape-1"></span>
+      <span class="shape shape-2"></span>
+      <span class="shape shape-3"></span>
     </div>
+    <div class="hero-grid"></div>
+
+    <div class="container position-relative">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-7 text-center text-lg-start">
+          <span class="hero-badge"><i class="bi bi-mortarboard-fill me-2"></i>Recuperación Extraordinaria · Módulo 4</span>
+          <h1 class="hero-title">
+            Puesta en marcha de la empresa en
+            <span class="gradient-text">asociatividad cooperativa</span>
+          </h1>
+          <p class="hero-sub">Profesor Francisco Arcides Canales</p>
+          <p class="hero-text">
+            Aprende de forma clara las tecnologías que se utilizan para poner en marcha
+            y operar una cooperativa de manera <strong>moderna</strong>.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#arduino" class="btn btn-primary btn-lg px-4">
+              <i class="bi bi-rocket-takeoff me-2"></i>Comenzar a explorar
+            </a>
+            <a href="#quiz" class="btn btn-ghost btn-lg px-4">
+              <i class="bi bi-patch-question me-2"></i>Ir al quiz
+            </a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat"><strong>4</strong><span>Tecnologías</span></div>
+            <div class="stat-divider"></div>
+            <div class="stat"><strong>1</strong><span>Ecosistema</span></div>
+            <div class="stat-divider"></div>
+            <div class="stat"><strong>100%</strong><span>Práctico</span></div>
+          </div>
+        </div>
+
+        <div class="col-lg-5 d-none d-lg-block">
+          <div class="hero-visual">
+            <div class="tech-float tech-float-1"><i class="bi bi-cpu"></i><span>Arduino</span></div>
+            <div class="tech-float tech-float-2"><i class="bi bi-window-sidebar"></i><span>WinForms</span></div>
+            <div class="tech-float tech-float-3"><i class="bi bi-phone"></i><span>.NET MAUI</span></div>
+            <div class="tech-float tech-float-4"><i class="bi bi-cart4"></i><span>PrestaShop</span></div>
+            <div class="hero-core">
+              <i class="bi bi-diagram-3-fill"></i>
+              <span>Cooperativa</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <a href="#intro" class="hero-scroll" aria-label="Bajar"><i class="bi bi-chevron-double-down"></i></a>
   </header>
 
   <!-- INTRODUCCIÓN -->
-  <section class="section py-5">
+  <section id="intro" class="section py-5">
     <div class="container">
       <div class="row justify-content-center">
-        <div class="col-lg-8 text-center">
-          <h2 class="section-title">¿De qué trata este módulo?</h2>
-          <p class="text-muted">
-            En este módulo se aprende cómo poner en marcha una empresa bajo el modelo de <strong>asociatividad cooperativa</strong> utilizando herramientas tecnológicas reales. 
-            Se trabajan proyectos prácticos con Arduino, aplicaciones de escritorio y web, aplicaciones móviles y tiendas en línea.
+        <div class="col-lg-9 text-center reveal">
+          <span class="eyebrow"><i class="bi bi-info-circle me-1"></i>Introducción</span>
+          <h2 class="section-title text-center">¿De qué trata este módulo?</h2>
+          <p class="section-lead">
+            En este módulo se aprende cómo poner en marcha una empresa bajo el modelo de
+            <strong>asociatividad cooperativa</strong> utilizando herramientas tecnológicas reales.
+            Se trabajan proyectos prácticos con Arduino, aplicaciones de escritorio y web,
+            aplicaciones móviles y tiendas en línea.
           </p>
+
+          <div class="row g-4 mt-2">
+            <div class="col-md-4">
+              <div class="mini-card reveal">
+                <i class="bi bi-lightbulb"></i>
+                <h5>Aprende haciendo</h5>
+                <p>Proyectos reales aplicados a una cooperativa.</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="mini-card reveal">
+                <i class="bi bi-diagram-3"></i>
+                <h5>Todo integrado</h5>
+                <p>Hardware, escritorio, web y móvil en un ecosistema.</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="mini-card reveal">
+                <i class="bi bi-robot"></i>
+                <h5>Tutor con IA</h5>
+                <p>Resuelve tus dudas al instante desde la página.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -70,22 +152,28 @@
   <!-- ARDUINO -->
   <section id="arduino" class="section py-5 bg-light">
     <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-6">
-          <span class="badge bg-primary mb-2">Proyecto Agustine-Arduino</span>
-          <h2 class="section-title">Arduino</h2>
-          <p>Arduino es una plataforma de hardware y software que permite crear sistemas electrónicos de forma sencilla. En este módulo se utiliza para automatizar procesos dentro de una cooperativa.</p>
-          <ul>
-            <li>Control de sensores (temperatura, humedad, movimiento)</li>
-            <li>Automatización de riego o iluminación</li>
-            <li>Sistemas de seguridad básicos</li>
-            <li>Monitoreo de inventarios o condiciones de almacenamiento</li>
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6 reveal">
+          <span class="tech-badge"><i class="bi bi-cpu me-1"></i>Proyecto Agustine-Arduino</span>
+          <h2 class="section-title">Arduino <span class="tech-num">01</span></h2>
+          <p class="section-lead">Arduino es una plataforma de hardware y software que permite crear sistemas electrónicos de forma sencilla. En este módulo se utiliza para automatizar procesos dentro de una cooperativa.</p>
+          <ul class="feature-list">
+            <li><i class="bi bi-check-circle-fill"></i>Control de sensores (temperatura, humedad, movimiento)</li>
+            <li><i class="bi bi-check-circle-fill"></i>Automatización de riego o iluminación</li>
+            <li><i class="bi bi-check-circle-fill"></i>Sistemas de seguridad básicos</li>
+            <li><i class="bi bi-check-circle-fill"></i>Monitoreo de inventarios o condiciones de almacenamiento</li>
           </ul>
-          <p class="mb-0"><strong>¿Qué se aprende?</strong> Los fundamentos de la electrónica y la programación de microcontroladores aplicados a un negocio real.</p>
+          <div class="learn-box">
+            <i class="bi bi-mortarboard"></i>
+            <div><strong>¿Qué se aprende?</strong> Los fundamentos de la electrónica y la programación de microcontroladores aplicados a un negocio real.</div>
+          </div>
         </div>
-        <div class="col-lg-6 text-center">
-          <div class="icon-box">
-            <i class="bi bi-cpu fs-1 text-primary"></i>
+        <div class="col-lg-6 reveal">
+          <div class="tech-visual tech-visual-arduino">
+            <div class="tech-visual-icon"><i class="bi bi-cpu-fill"></i></div>
+            <div class="chip-line"></div>
+            <div class="pin-row"><span></span><span></span><span></span><span></span><span></span></div>
+            <div class="tech-visual-label">Sensores · Actuadores · Control</div>
           </div>
         </div>
       </div>
@@ -95,20 +183,38 @@
   <!-- WINFORMS + ASPX -->
   <section id="winforms" class="section py-5">
     <div class="container">
-      <div class="row align-items-center flex-lg-row-reverse">
-        <div class="col-lg-6">
-          <span class="badge bg-primary mb-2">Proyecto WinForms y ASPX</span>
-          <h2 class="section-title">Windows Forms + ASPX</h2>
-          <p>Se desarrollan dos tipos de aplicaciones:</p>
-          <ul>
-            <li><strong>Windows Forms:</strong> Aplicaciones de escritorio para gestionar la información interna de la cooperativa (socios, aportes, inventario, ventas).</li>
-            <li><strong>ASPX:</strong> Páginas web dinámicas que permiten consultar y registrar información desde cualquier navegador.</li>
+      <div class="row align-items-center flex-lg-row-reverse g-5">
+        <div class="col-lg-6 reveal">
+          <span class="tech-badge"><i class="bi bi-window-sidebar me-1"></i>Proyecto WinForms y ASPX</span>
+          <h2 class="section-title">Windows Forms + ASPX <span class="tech-num">02</span></h2>
+          <p class="section-lead">Se desarrollan dos tipos de aplicaciones complementarias para la gestión de la cooperativa:</p>
+          <ul class="feature-list">
+            <li><i class="bi bi-check-circle-fill"></i><strong>Windows Forms:</strong> aplicaciones de escritorio para gestionar socios, aportes, inventario y ventas.</li>
+            <li><i class="bi bi-check-circle-fill"></i><strong>ASPX:</strong> páginas web dinámicas para consultar y registrar información desde cualquier navegador.</li>
           </ul>
-          <p class="mb-0"><strong>¿Qué se aprende?</strong> Cómo crear sistemas de gestión (tipo administrativo) tanto para computadora como para la web.</p>
+          <div class="learn-box">
+            <i class="bi bi-mortarboard"></i>
+            <div><strong>¿Qué se aprende?</strong> Cómo crear sistemas de gestión (tipo administrativo) tanto para computadora como para la web.</div>
+          </div>
         </div>
-        <div class="col-lg-6 text-center">
-          <div class="icon-box">
-            <i class="bi bi-window-sidebar fs-1 text-primary"></i>
+        <div class="col-lg-6 reveal">
+          <div class="tech-visual tech-visual-win">
+            <div class="window-mock">
+              <div class="window-bar"><span></span><span></span><span></span></div>
+              <div class="window-body">
+                <div class="window-side"></div>
+                <div class="window-main">
+                  <div class="sk-row"></div>
+                  <div class="sk-row short"></div>
+                  <div class="sk-row"></div>
+                  <div class="sk-grid"><span></span><span></span><span></span><span></span></div>
+                </div>
+              </div>
+            </div>
+            <div class="window-mock window-mock-back">
+              <div class="window-bar"><span></span><span></span><span></span></div>
+              <div class="window-body"><div class="window-main"><div class="sk-row"></div><div class="sk-row short"></div></div></div>
+            </div>
           </div>
         </div>
       </div>
@@ -118,23 +224,39 @@
   <!-- .NET MAUI -->
   <section id="maui" class="section py-5 bg-light">
     <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-6">
-          <span class="badge bg-primary mb-2">Proyecto Final .NET MAUI</span>
-          <h2 class="section-title">.NET MAUI</h2>
-          <p>.NET MAUI permite crear aplicaciones que funcionan en <strong>Android, iOS y Windows</strong> con un solo código.</p>
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6 reveal">
+          <span class="tech-badge"><i class="bi bi-phone me-1"></i>Proyecto Final .NET MAUI</span>
+          <h2 class="section-title">.NET MAUI <span class="tech-num">03</span></h2>
+          <p class="section-lead">.NET MAUI permite crear aplicaciones que funcionan en <strong>Android, iOS y Windows</strong> con un solo código.</p>
           <p>En el contexto de la cooperativa se usa para que los asociados puedan:</p>
-          <ul>
-            <li>Consultar información desde el celular</li>
-            <li>Realizar pedidos o reportes</li>
-            <li>Recibir notificaciones</li>
-            <li>Acceder a datos importantes de forma móvil</li>
+          <ul class="feature-list">
+            <li><i class="bi bi-check-circle-fill"></i>Consultar información desde el celular</li>
+            <li><i class="bi bi-check-circle-fill"></i>Realizar pedidos o reportes</li>
+            <li><i class="bi bi-check-circle-fill"></i>Recibir notificaciones</li>
+            <li><i class="bi bi-check-circle-fill"></i>Acceder a datos importantes de forma móvil</li>
           </ul>
-          <p class="mb-0"><strong>¿Qué se aprende?</strong> Desarrollo de aplicaciones multiplataforma modernas.</p>
+          <div class="learn-box">
+            <i class="bi bi-mortarboard"></i>
+            <div><strong>¿Qué se aprende?</strong> Desarrollo de aplicaciones multiplataforma modernas.</div>
+          </div>
         </div>
-        <div class="col-lg-6 text-center">
-          <div class="icon-box">
-            <i class="bi bi-phone fs-1 text-primary"></i>
+        <div class="col-lg-6 reveal">
+          <div class="tech-visual tech-visual-maui">
+            <div class="phone-mock">
+              <div class="phone-notch"></div>
+              <div class="phone-screen">
+                <div class="app-header"></div>
+                <div class="app-card"></div>
+                <div class="app-card"></div>
+                <div class="app-card short"></div>
+              </div>
+            </div>
+            <div class="os-chips">
+              <span><i class="bi bi-android2"></i>Android</span>
+              <span><i class="bi bi-apple"></i>iOS</span>
+              <span><i class="bi bi-windows"></i>Windows</span>
+            </div>
           </div>
         </div>
       </div>
@@ -144,23 +266,32 @@
   <!-- PRESTASHOP -->
   <section id="prestashop" class="section py-5">
     <div class="container">
-      <div class="row align-items-center flex-lg-row-reverse">
-        <div class="col-lg-6">
-          <span class="badge bg-primary mb-2">PrestaShop (Individual)</span>
-          <h2 class="section-title">PrestaShop</h2>
-          <p>PrestaShop es una plataforma profesional para crear tiendas en línea.</p>
+      <div class="row align-items-center flex-lg-row-reverse g-5">
+        <div class="col-lg-6 reveal">
+          <span class="tech-badge"><i class="bi bi-cart4 me-1"></i>PrestaShop (Individual)</span>
+          <h2 class="section-title">PrestaShop <span class="tech-num">04</span></h2>
+          <p class="section-lead">PrestaShop es una plataforma profesional para crear tiendas en línea.</p>
           <p>En este módulo se utiliza para que la cooperativa pueda vender sus productos por internet de forma ordenada y profesional (café, productos agrícolas, artesanías, etc.).</p>
-          <ul>
-            <li>Catálogo de productos</li>
-            <li>Carrito de compras</li>
-            <li>Gestión de pedidos</li>
-            <li>Pasarelas de pago</li>
+          <ul class="feature-list">
+            <li><i class="bi bi-check-circle-fill"></i>Catálogo de productos</li>
+            <li><i class="bi bi-check-circle-fill"></i>Carrito de compras</li>
+            <li><i class="bi bi-check-circle-fill"></i>Gestión de pedidos</li>
+            <li><i class="bi bi-check-circle-fill"></i>Pasarelas de pago</li>
           </ul>
-          <p class="mb-0"><strong>¿Qué se aprende?</strong> Cómo crear y administrar una tienda virtual real.</p>
+          <div class="learn-box">
+            <i class="bi bi-mortarboard"></i>
+            <div><strong>¿Qué se aprende?</strong> Cómo crear y administrar una tienda virtual real.</div>
+          </div>
         </div>
-        <div class="col-lg-6 text-center">
-          <div class="icon-box">
-            <i class="bi bi-cart4 fs-1 text-primary"></i>
+        <div class="col-lg-6 reveal">
+          <div class="tech-visual tech-visual-shop">
+            <div class="shop-grid">
+              <div class="shop-item"><i class="bi bi-cup-hot"></i></div>
+              <div class="shop-item"><i class="bi bi-basket"></i></div>
+              <div class="shop-item"><i class="bi bi-box-seam"></i></div>
+              <div class="shop-item"><i class="bi bi-bag-heart"></i></div>
+            </div>
+            <div class="shop-cart"><i class="bi bi-cart-check-fill"></i><span>Carrito de compras</span></div>
           </div>
         </div>
       </div>
@@ -171,13 +302,47 @@
   <section id="integracion" class="section py-5 bg-light">
     <div class="container">
       <div class="row justify-content-center">
-        <div class="col-lg-8 text-center">
-          <h2 class="section-title">¿Cómo se integran todas estas herramientas?</h2>
-          <p class="text-muted mb-4">
-            Arduino automatiza procesos físicos, WinForms y ASPX gestionan la información interna, 
-            .NET MAUI lleva la cooperativa al celular de los asociados, y PrestaShop permite vender los productos por internet. 
-            Juntas forman un ecosistema tecnológico completo para poner en marcha y operar una cooperativa de forma moderna.
+        <div class="col-lg-9 text-center reveal">
+          <span class="eyebrow"><i class="bi bi-diagram-3 me-1"></i>Integración</span>
+          <h2 class="section-title text-center">¿Cómo se integran todas estas herramientas?</h2>
+          <p class="section-lead">
+            Arduino automatiza procesos físicos, WinForms y ASPX gestionan la información interna,
+            .NET MAUI lleva la cooperativa al celular de los asociados, y PrestaShop permite vender
+            los productos por internet. Juntas forman un ecosistema tecnológico completo.
           </p>
+        </div>
+      </div>
+
+      <div class="integration-flow reveal">
+        <div class="flow-card flow-1">
+          <i class="bi bi-cpu-fill"></i>
+          <h6>Arduino</h6>
+          <span>Procesos físicos</span>
+        </div>
+        <div class="flow-arrow"><i class="bi bi-arrow-right"></i></div>
+        <div class="flow-card flow-2">
+          <i class="bi bi-window-sidebar"></i>
+          <h6>WinForms + ASPX</h6>
+          <span>Gestión interna</span>
+        </div>
+        <div class="flow-arrow"><i class="bi bi-arrow-right"></i></div>
+        <div class="flow-card flow-3">
+          <i class="bi bi-phone"></i>
+          <h6>.NET MAUI</h6>
+          <span>Acceso móvil</span>
+        </div>
+        <div class="flow-arrow"><i class="bi bi-arrow-right"></i></div>
+        <div class="flow-card flow-4">
+          <i class="bi bi-cart4"></i>
+          <h6>PrestaShop</h6>
+          <span>Ventas en línea</span>
+        </div>
+      </div>
+
+      <div class="text-center mt-4 reveal">
+        <div class="integration-result">
+          <i class="bi bi-diagram-3-fill"></i>
+          <span>Una cooperativa moderna, conectada de punta a punta</span>
         </div>
       </div>
     </div>
@@ -188,9 +353,12 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-8">
-          <h2 class="section-title text-center mb-4">Mini Práctica · Quiz</h2>
-          <div id="quiz-container" class="card shadow-sm border-0">
-            <div class="card-body p-4">
+          <div class="text-center reveal">
+            <span class="eyebrow"><i class="bi bi-patch-question me-1"></i>Mini Práctica</span>
+            <h2 class="section-title text-center mb-4">Pon a prueba lo aprendido</h2>
+          </div>
+          <div id="quiz-container" class="card quiz-card border-0 reveal">
+            <div class="card-body p-4 p-md-5">
               <div id="quiz-content">
                 <!-- El quiz se genera con JavaScript -->
               </div>
@@ -206,12 +374,24 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-8">
-          <h2 class="section-title text-center mb-4">Ejercicio Práctico</h2>
-          <div class="card shadow-sm border-0">
-            <div class="card-body p-4">
-              <p>Describe brevemente cómo usarías una de las tecnologías de este módulo (Arduino, WinForms, .NET MAUI o PrestaShop) en una cooperativa. El tutor de IA te dará una retroalimentación.</p>
-              <textarea id="ejercicio-texto" class="form-control mb-3" rows="4" placeholder="Escribe aquí tu idea..."></textarea>
-              <button id="btn-ejercicio" class="btn btn-primary">Enviar al tutor</button>
+          <div class="text-center reveal">
+            <span class="eyebrow"><i class="bi bi-pencil-square me-1"></i>Actividad</span>
+            <h2 class="section-title text-center mb-4">Ejercicio Práctico</h2>
+          </div>
+          <div class="card exercise-card border-0 reveal">
+            <div class="card-body p-4 p-md-5">
+              <div class="exercise-head">
+                <div class="exercise-icon"><i class="bi bi-lightbulb-fill"></i></div>
+                <p class="mb-0">Describe brevemente cómo usarías una de las tecnologías de este módulo (Arduino, WinForms, .NET MAUI o PrestaShop) en una cooperativa. El tutor de IA te dará una retroalimentación.</p>
+              </div>
+              <textarea id="ejercicio-texto" class="form-control mt-3" rows="4" maxlength="600" placeholder="Escribe aquí tu idea..."></textarea>
+              <div class="d-flex justify-content-between align-items-center mt-2 mb-3">
+                <small class="text-muted">Sé claro y concreto.</small>
+                <small class="text-muted"><span id="char-count">0</span>/600</small>
+              </div>
+              <button id="btn-ejercicio" class="btn btn-primary px-4">
+                <i class="bi bi-send me-2"></i>Enviar al tutor
+              </button>
               <div id="ejercicio-respuesta" class="mt-3"></div>
             </div>
           </div>
@@ -221,32 +401,70 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="footer py-4 text-center text-white">
+  <footer class="footer pt-5 pb-4 text-white">
     <div class="container">
-      <p class="mb-1">Módulo 4 · Puesta en marcha de la empresa en asociatividad cooperativa</p>
-      <p class="mb-0 small">Profesor Francisco Arcides Canales · Recuperación Extraordinaria</p>
+      <div class="row g-4">
+        <div class="col-lg-5">
+          <h5 class="footer-brand"><i class="bi bi-building-gear me-2"></i>Módulo 4</h5>
+          <p class="footer-desc mb-0">Puesta en marcha de la empresa en asociatividad cooperativa. Un recorrido por las tecnologías que hacen posible una cooperativa moderna.</p>
+        </div>
+        <div class="col-lg-4">
+          <h6 class="footer-title">Secciones</h6>
+          <div class="footer-links">
+            <a href="#arduino">Arduino</a>
+            <a href="#winforms">WinForms + ASPX</a>
+            <a href="#maui">.NET MAUI</a>
+            <a href="#prestashop">PrestaShop</a>
+            <a href="#quiz">Quiz</a>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <h6 class="footer-title">Profesor</h6>
+          <p class="footer-desc mb-0">Francisco Arcides Canales</p>
+          <p class="footer-desc mb-0">Recuperación Extraordinaria</p>
+        </div>
+      </div>
+      <hr class="footer-divider">
+      <p class="text-center small mb-0 footer-bottom">© <span id="year"></span> · Módulo 4 · Todos los derechos reservados</p>
     </div>
   </footer>
 
+  <!-- BOTÓN VOLVER ARRIBA -->
+  <button id="back-to-top" class="back-to-top" aria-label="Volver arriba">
+    <i class="bi bi-arrow-up"></i>
+  </button>
+
   <!-- BOTÓN DEL CHAT -->
-  <button id="chat-toggle" class="btn btn-primary chat-toggle">
+  <button id="chat-toggle" class="btn btn-primary chat-toggle" aria-label="Abrir tutor">
     <i class="bi bi-robot"></i>
+    <span class="chat-toggle-pulse"></span>
   </button>
 
   <!-- VENTANA DEL CHAT -->
-  <div id="chat-window" class="chat-window shadow">
+  <div id="chat-window" class="chat-window shadow-lg">
     <div class="chat-header">
-      <span><i class="bi bi-robot me-2"></i>Tutor del Módulo 4</span>
-      <button id="chat-close" class="btn-close btn-close-white"></button>
+      <div class="chat-header-info">
+        <div class="chat-avatar"><i class="bi bi-robot"></i></div>
+        <div>
+          <span class="chat-title">Tutor del Módulo 4</span>
+          <span class="chat-status"><i class="bi bi-circle-fill"></i> En línea</span>
+        </div>
+      </div>
+      <button id="chat-close" class="btn-close btn-close-white" aria-label="Cerrar"></button>
     </div>
     <div id="chat-messages" class="chat-messages">
       <div class="message bot">
         Hola, soy el tutor de este módulo. Puedes preguntarme cualquier cosa relacionada con Arduino, WinForms, ASPX, .NET MAUI, PrestaShop o cómo se usan en una cooperativa.
       </div>
     </div>
+    <div class="chat-quick">
+      <button class="quick-chip" data-q="¿Qué es Arduino?">¿Qué es Arduino?</button>
+      <button class="quick-chip" data-q="¿Qué es .NET MAUI?">¿Qué es .NET MAUI?</button>
+      <button class="quick-chip" data-q="¿Cómo se integran todas las herramientas?">Integración</button>
+    </div>
     <div class="chat-input">
       <input type="text" id="chat-input" class="form-control" placeholder="Escribe tu pregunta...">
-      <button id="chat-send" class="btn btn-primary"><i class="bi bi-send"></i></button>
+      <button id="chat-send" class="btn btn-primary" aria-label="Enviar"><i class="bi bi-send-fill"></i></button>
     </div>
   </div>
 
