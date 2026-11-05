@@ -2,8 +2,7 @@
 // TUTOR.JS - Chat con IA (Groq)
 // ===============================
 
-// ⚠️ IMPORTANTE: Reemplaza el valor de abajo con tu propia API Key gratuita de Groq
-// Consíguela en: https://console.groq.com
+// ⚠️ IMPORTANTE: Esta clave está expuesta. Después de la defensa, bórrala y genera una nueva.
 const GROQ_API_KEY = "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";
 
 const chatMessages = document.getElementById('chat-messages');
@@ -13,7 +12,7 @@ const ejercicioTexto = document.getElementById('ejercicio-texto');
 const btnEjercicio = document.getElementById('btn-ejercicio');
 const ejercicioRespuesta = document.getElementById('ejercicio-respuesta');
 
-// Prompt del sistema (el tutor conoce todo el contenido de la página)
+// Prompt del sistema
 const SYSTEM_PROMPT = `
 Eres un tutor amable y claro del Módulo 4: "Puesta en marcha de la empresa en asociatividad cooperativa" del profesor Francisco Arcides Canales.
 
@@ -45,8 +44,8 @@ function addMessage(text, isUser = false) {
 
 // Función principal para llamar a la IA
 async function askTutor(userMessage) {
-  if (!GROQ_API_KEY || GROQ_API_KEY === "PEGA_AQUI_TU_API_KEY_DE_GROQ") {
-    return "⚠️ Falta configurar la API Key de Groq. Ve al archivo js/tutor.js y reemplaza el valor de GROQ_API_KEY por tu clave gratuita.";
+  if (!GROQ_API_KEY || GROQ_API_KEY.includes("PEGA_AQUI")) {
+    return "⚠️ Falta configurar la API Key de Groq.";
   }
 
   try {
@@ -57,7 +56,7 @@ async function askTutor(userMessage) {
         "Authorization": `Bearer ${GROQ_API_KEY}`
       },
       body: JSON.stringify({
-        model: "llama-3.3-70b-versatile",
+        model: "llama-3.1-70b-versatile",
         messages: [
           { role: "system", content: SYSTEM_PROMPT },
           { role: "user", content: userMessage }
@@ -68,6 +67,8 @@ async function askTutor(userMessage) {
     });
 
     if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      console.error("Error API:", response.status, errorData);
       throw new Error("Error en la respuesta de la API");
     }
 
@@ -88,7 +89,6 @@ async function sendMessage() {
   chatInput.value = "";
   chatSend.disabled = true;
 
-  // Mensaje de "escribiendo..."
   const loading = document.createElement('div');
   loading.className = 'message bot';
   loading.textContent = "Escribiendo...";
