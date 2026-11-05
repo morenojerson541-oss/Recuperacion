@@ -48,6 +48,17 @@ function addMessage(text, isUser = false) {
   div.textContent = text;
   chatMessages.appendChild(div);
   chatMessages.scrollTop = chatMessages.scrollHeight;
+  return div;
+}
+
+// Burbuja animada de "escribiendo..."
+function addTypingIndicator() {
+  const div = document.createElement('div');
+  div.className = 'message bot';
+  div.innerHTML = '<span class="typing-dots"><span></span><span></span><span></span></span>';
+  chatMessages.appendChild(div);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+  return div;
 }
 
 // Función principal para llamar a la IA
@@ -118,11 +129,7 @@ async function sendMessage() {
   chatInput.value = "";
   chatSend.disabled = true;
 
-  const loading = document.createElement('div');
-  loading.className = 'message bot';
-  loading.textContent = "Escribiendo...";
-  chatMessages.appendChild(loading);
-  chatMessages.scrollTop = chatMessages.scrollHeight;
+  const loading = addTypingIndicator();
 
   const reply = await askTutor(text);
   loading.remove();
@@ -149,12 +156,20 @@ if (btnEjercicio && ejercicioTexto && ejercicioRespuesta) {
     }
 
     btnEjercicio.disabled = true;
-    ejercicioRespuesta.innerHTML = `<div class="text-muted">El tutor está revisando tu idea...</div>`;
+    ejercicioRespuesta.innerHTML = `
+      <div class="d-flex align-items-center gap-2 text-muted">
+        <span class="typing-dots"><span></span><span></span><span></span></span>
+        El tutor está revisando tu idea...
+      </div>`;
 
     const prompt = `El estudiante escribió esta idea sobre cómo usaría una tecnología del módulo en una cooperativa:\n\n"${idea}"\n\nDale una retroalimentación corta, clara y motivadora. Menciona 1 o 2 aciertos y 1 sugerencia de mejora. No seas muy largo.`;
 
     const reply = await askTutor(prompt);
-    ejercicioRespuesta.innerHTML = `<div class="alert alert-light border">${reply}</div>`;
+    ejercicioRespuesta.innerHTML = `
+      <div class="learn-box" style="border-left-color: var(--amber); background: linear-gradient(135deg, rgba(224,164,35,0.09), rgba(47,125,93,0.05));">
+        <i class="bi bi-chat-quote-fill" style="color: var(--amber);"></i>
+        <div>${reply}</div>
+      </div>`;
     btnEjercicio.disabled = false;
   });
 }
